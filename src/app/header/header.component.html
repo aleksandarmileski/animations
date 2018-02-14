@@ -1,0 +1,40 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" [routerLink]="['']">NgStyles</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li [routerLinkActive]="'active-link'">
+                <a class="nav-link" [routerLink]="['/goal']">Goal</a>
+            </li>
+            <li [routerLinkActive]="'active-link'">
+                <a class="nav-link" [routerLink]="['/quote']">Quote</a>
+            </li>
+            <li [routerLinkActive]="'active-link'">
+                <a class="nav-link" [routerLink]="['/author']">Author</a>
+            </li>
+            <li [routerLinkActive]="'active-link'">
+                <a class="nav-link" [routerLink]="['/projects']">Projects</a>
+            </li>
+            <li [routerLinkActive]="'active-link'">
+                <a class="nav-link" [routerLink]="['/transitions']">Transitions</a>
+            </li>
+            <li [routerLinkActive]="'active-link'">
+                <a class="nav-link" [routerLink]="['/animations']">Animations</a>
+            </li>
+            <li [routerLinkActive]="'active-link'">
+                <a class="nav-link" [routerLink]="['/ng-animations']">NG-Animations</a>
+            </li>
+            <li [routerLinkActive]="'active-link'">
+                <a class="nav-link" [routerLink]="['/pro-ng-animations']">PRO-NG-Animations</a>
+            </li>
+            <li [routerLinkActive]="'active-link'">
+                <a class="nav-link" [routerLink]="['/users']">Users</a>
+            </li>
+        </ul>
+    </div>
+</nav>

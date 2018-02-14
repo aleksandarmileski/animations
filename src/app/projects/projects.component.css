@@ -1,0 +1,31 @@
+.inactive {
+    border: 3px solid #cccccc;
+    color: #cccccc;
+}
+
+.loading-bar {
+    width: 200px;
+    height: 20px;
+    border: 1px solid black;
+    box-sizing: content-box;
+}
+
+.loading-bar-element {
+    width: 0;
+    height: 20px;
+    background-color: deepskyblue;
+    animation: loading 200ms infinite;
+}
+
+@keyframes loading {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 200px;
+    }
+}
+
+:host {
+    display: block;
+}

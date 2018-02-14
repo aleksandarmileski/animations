@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row col-12">
+        <h3 class="mx-auto">My Projects</h3>
+    </div>
+    <div class="row col-12 justify-content-end">
+        <button
+            class="btn btn-outline-success"
+            *ngIf="!createNew"
+            (click)="createNew = true">
+            Create New Project
+        </button>
+        <button
+            class="btn btn-outline-danger"
+            *ngIf="createNew"
+            (click)="createNew = false">
+            Cancel
+        </button>
+    </div>
+    <hr>
+    <div id="newProject"
+         *ngIf="createNew"
+         @slideState>
+        <form class="container-fluid" [formGroup]="projectForm">
+            <div class="form-group row">
+                <label for="projectName" class="col-2 col-form-label">Project Name</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" value="" id="projectName"
+                           formControlName="name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="projectDescription" class="col-2 col-form-label">Project Description</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" value="" id="projectDescription"
+                           formControlName="description">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">State:</label>
+                <div class="col-10">
+                    <select class="form-control"
+                            formControlName="status">
+                        <option *ngFor="let status of statuses; let i = index"
+                                [value]="status">{{status}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn col-12"
+                    [@buttonState]="projectForm.valid ? 'valid':'invalid'"
+                    [ngClass]="{'btn-outline-danger': !projectForm.valid, 'btn-outline-success':projectForm.valid}"
+                    [disabled]="!projectForm.valid"
+                    (click)="onAddGroup()">Add Group
+            </button>
+        </form>
+        <hr>
+    </div>
+    <div class="row col-12">
+        <div
+            *ngIf="!projects"
+            class="loading-bar mt-3 mx-auto">
+            <div
+                *ngIf="progres != 'finished'"
+                class="loading-bar-element">
+            </div>
+        </div>
+        <app-project
+            *ngFor="let project of projects, let i=index"
+            [ngClass]="{inactive: project.status ==='inactive'}"
+            (click)="markedPrjIndex=i"
+            [@markedState]="markedPrjIndex ===i ? 'marked':'default'"
+            [project]="project"
+            [@itemState]="createNew ? 'slidDown' : 'slidUp'"
+            (@itemState.done)="onAnimationExecuted($event,i)"
+            (deleteProject)="deleteProject(project)"
+            (projectStatus)="onStatusChange($event)"
+            (projectCreated)="onProjectCreated($event)"
+            (creationCancelled)="createNew=false"></app-project>
+    </div>
+</div>

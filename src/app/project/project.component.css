@@ -1,0 +1,36 @@
+:host {
+    display: block;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 3px 3px #ccc;
+    margin-top: 20px;
+    padding: 20px;
+    /*transition: border-width 200ms ease-out;*/
+}
+
+.form-control {
+    display: inline-block;
+    width: 50%;
+}
+
+h3 {
+    text-align: center;
+}
+
+:host(.marked) {
+    border: 3px solid blue;
+    padding: 17px;
+    /*background-color: lightblue;*/
+    /*transition: background-color 200ms ease-in;*/
+    /*animation: selecting 200ms ease-out;*/
+}
+
+@keyframes selecting {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}

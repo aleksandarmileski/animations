@@ -1,0 +1,26 @@
+<!--<app-goal *ngFor="let goal of courseGoals; let i=index"-->
+<!--[goal]="goal"-->
+<!--[ngClass]="{active: goal.isActiveGoal}"-->
+<!--(click)="setActiveGoal(i)"></app-goal>-->
+<!--<div class="container">-->
+<!--<h1 class="bg-warning">My Quotes</h1>-->
+<!--<div class="interesting">-->
+<!--<app-quote-->
+<!--(click)="isFavorite = !isFavorite"-->
+<!--[ngClass]="{'favorite super-favorite': isFavorite}"-->
+<!--[ngStyle]="{'width': isFavorite ? '600px': '400px'}">-->
+<!--</app-quote>-->
+<!--</div>-->
+<!--<button  (click)="onShowBoring(boringBlock)" class="btn btn-outline-danger">Show Boring-->
+<!--quotes-->
+<!--</button>-->
+<!--<div style="display: none" class="boring" #boringBlock>-->
+<!--<div id="very-boring">-->
+<!--<app-quote></app-quote>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<app-header></app-header>
+<div class="container mt-5" style="overflow: hidden">
+    <router-outlet></router-outlet>
+</div>
