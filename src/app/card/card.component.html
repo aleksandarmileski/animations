@@ -1,0 +1,17 @@
+<button class="btn btn-default p-5 mb-5 w-100 mx-auto" (click)="needAnimation = !needAnimation">Animate</button>
+<div class="card text-center"
+     *ngIf="needAnimation"
+     [@panelState]="showParagraph">
+    <div class="card-header bg-info">
+        Featured
+    </div>
+    <div class="card-block">
+        <h4 class="card-title">Special title treatment</h4>
+        <p *ngIf="showParagraph" class="card-text">Hidden paragraph</p>
+        <a class="btn btn-primary"
+           (click)="showParagraph = !showParagraph"> {{showParagraph? "Hide ":"Show " }}paragraph</a>
+    </div>
+    <div class="card-footer text-muted">
+        2 days ago
+    </div>
+</div>
