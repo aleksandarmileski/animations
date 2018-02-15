@@ -6,14 +6,13 @@ import {Component, Input, OnInit} from '@angular/core';
     styleUrls: ['./goal.component.css']
 })
 export class GoalComponent implements OnInit {
-    @Input() goal: any;
+    @Input() goal: any = '';
 
     constructor() {
     }
 
     ngOnInit() {
     }
-
 
 
 }

@@ -20,7 +20,9 @@
     <div id="newProject"
          *ngIf="createNew"
          @slideState>
-        <form class="container-fluid" [formGroup]="projectForm">
+        <form class="container-fluid"
+              [formGroup]="projectForm"
+              [@formState]="projectForm.value">
             <div class="form-group row">
                 <label for="projectName" class="col-2 col-form-label">Project Name</label>
                 <div class="col-10">
@@ -64,17 +66,19 @@
                 class="loading-bar-element">
             </div>
         </div>
-        <app-project
-            *ngFor="let project of projects, let i=index"
-            [ngClass]="{inactive: project.status ==='inactive'}"
-            (click)="markedPrjIndex=i"
-            [@markedState]="markedPrjIndex ===i ? 'marked':'default'"
-            [project]="project"
-            [@itemState]="createNew ? 'slidDown' : 'slidUp'"
-            (@itemState.done)="onAnimationExecuted($event,i)"
-            (deleteProject)="deleteProject(project)"
-            (projectStatus)="onStatusChange($event)"
-            (projectCreated)="onProjectCreated($event)"
-            (creationCancelled)="createNew=false"></app-project>
+        <div [@listState]="projects?.length" class="col-12">
+            <app-project
+                *ngFor="let project of projects, let i=index"
+                [ngClass]="{inactive: project.status ==='inactive'}"
+                (click)="markedPrjIndex=i"
+                [@markedState]="markedPrjIndex ===i ? 'marked':'default'"
+                [project]="project"
+
+                (@itemState.done)="onAnimationExecuted($event,i)"
+                (deleteProject)="deleteProject(project)"
+                (projectStatus)="onStatusChange($event)"
+                (projectCreated)="onProjectCreated($event)"
+                (creationCancelled)="createNew=false"></app-project>
+        </div>
     </div>
 </div>

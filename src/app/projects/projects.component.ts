@@ -1,6 +1,9 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import {ProjectsService} from '../projects.service';
-import {buttonSateTrigger, itemStateTrigger, markedTrigger, slideStateTrigger} from '../project/project-animations';
+import {
+    buttonSateTrigger, formStateTrigger, itemStateTrigger, listStateTrigger, markedTrigger,
+    slideStateTrigger
+} from '../project/project-animations';
 import {Project} from '../project';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {routeSlideStateTrigger} from '../shared/route-animations';
@@ -14,7 +17,9 @@ import {routeSlideStateTrigger} from '../shared/route-animations';
         itemStateTrigger,
         slideStateTrigger,
         buttonSateTrigger,
-        routeSlideStateTrigger
+        routeSlideStateTrigger,
+        formStateTrigger,
+        listStateTrigger
     ]
 })
 export class ProjectsComponent implements OnInit {
@@ -34,12 +39,14 @@ export class ProjectsComponent implements OnInit {
     ngOnInit() {
         this.projectsService.getProjects()
             .subscribe(p => {
-                p.forEach((project, i) => {
-                    setTimeout(function () {
-                        this.projects.push(project);
-                    }.bind(this), i * 200);
-                });
-                this.progress = 'finished';
+                // without staggered animations
+                // p.forEach((project, i) => {
+                //     setTimeout(function () {
+                //         this.projects.push(project);
+                //     }.bind(this), i * 200);
+                // });
+                // this.progress = 'finished';
+                this.projects = p;
             });
         this.createForm();
     }
@@ -67,12 +74,11 @@ export class ProjectsComponent implements OnInit {
     }
 
     onAnimationExecuted(project, i) {
-        // console.log(project, ' ', i);
+        console.log(project, ' ', i);
     }
 
     onAddGroup() {
         ((project) => {
-            console.log(project);
             setTimeout(function () {
                 this.projects.unshift(project);
                 setTimeout(function () {

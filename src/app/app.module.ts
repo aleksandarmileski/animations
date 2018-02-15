@@ -18,17 +18,21 @@ import {AngularAnimationsComponent} from './angular-animations/angular-animation
 import {ProAngularAnimationsComponent} from './pro-angular-animations/pro-angular-animations.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UsersComponent} from './comopnents/users/users.component';
+import {CardComponent} from './card/card.component';
+import {ProgramaticalAnimationsComponent} from './programatical-animations/programatical-animations.component';
 
 const routes: Routes = [
-    {path: 'goal', component: GoalComponent},
-    {path: 'quote', component: QuoteComponent},
-    {path: 'author', component: AuthorComponent},
-    {path: 'projects', component: ProjectsComponent},
-    {path: 'transitions', component: CssTransitionComponent},
-    {path: 'animations', component: CssAnimationComponent},
-    {path: 'ng-animations', component: AngularAnimationsComponent},
-    {path: 'pro-ng-animations', component: ProAngularAnimationsComponent},
-    {path: 'users', component: UsersComponent},
+    {path: 'goal', component: GoalComponent, data: {animation: {page: 'goal'}}},
+    {path: 'quote', component: QuoteComponent, data: {animation: {page: 'quote'}}},
+    {path: 'author', component: AuthorComponent, data: {animation: {page: 'author'}}},
+    {path: 'projects', component: ProjectsComponent, data: {animation: {page: 'projects'}}},
+    {path: 'transitions', component: CssTransitionComponent, data: {animation: {page: 'transitions'}}},
+    {path: 'animations', component: CssAnimationComponent, data: {animation: {page: 'animations'}}},
+    {path: 'ng-animations', component: AngularAnimationsComponent, data: {animation: {page: 'ng-animations'}}},
+    {path: 'pro-ng-animations', component: ProAngularAnimationsComponent, data: {animation: {page: 'pro-ng-animations'}}},
+    {path: 'users', component: UsersComponent, data: {animation: {page: 'users'}}},
+    {path: 'card', component: CardComponent, data: {animation: {page: 'users'}}},
+    {path: 'programatical-animations', component: ProgramaticalAnimationsComponent, data: {animation: {page: 'programatical-animations'}}},
     {path: '', redirectTo: '/projects', pathMatch: 'full'},
 ];
 
@@ -45,7 +49,9 @@ const routes: Routes = [
         CssAnimationComponent,
         AngularAnimationsComponent,
         ProAngularAnimationsComponent,
-        UsersComponent
+        UsersComponent,
+        CardComponent,
+        ProgramaticalAnimationsComponent
     ],
     imports: [
         BrowserModule,
